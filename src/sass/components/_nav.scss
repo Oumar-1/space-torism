@@ -12,10 +12,12 @@ nav {
   padding-inline: 25px;
 
   hr {
-    /* margin-right: -15px; */
     flex-grow: 1;
     display: block;
     margin: 0;
+    position: relative;
+    border-width: 1.5px;
+    z-index: 2;
     margin-left: 50px;
     margin-right: -30px;
   }
@@ -23,16 +25,38 @@ nav {
     display: flex;
     list-style-type: none;
     align-items: center;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
+    letter-spacing: 2.7px;
     margin: 0;
     background-color: rgba(255, 255, 255, 4%);
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(80px);
     font-family: 'Barlow';
-    li a {
-      text-transform: uppercase;
-      padding: 1em 0.8em;
-      display: inline-block;
-      font-family: var(--ff-second);
+    padding-inline: 50px;
+    counter-reset: nav-counter;
+
+    li {
+      &:nth-child(n + 2) {
+        counter-increment: nav-counter;
+      }
+      a {
+        text-transform: uppercase;
+        padding: 0.85em 0.6em;
+        display: inline-block;
+        font-family: var(--ff-second);
+        border-bottom: 3px solid #0000;
+        transition: border 250ms;
+        &:is(:hover, :focus) {
+          border-color: rgba(255, 255, 255, 0.5);
+        }
+        &.active {
+          border-color: var(--clr-light);
+        }
+        &:before {
+          content: '0' counter(nav-counter);
+          margin-right: 3px;
+          font-weight: bold;
+        }
+      }
     }
   }
 }
