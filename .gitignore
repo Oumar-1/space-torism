@@ -1,0 +1,7 @@
+/desing
+/.vscode
+# dependencies
+/node_modules
+
+# Production
+/build
