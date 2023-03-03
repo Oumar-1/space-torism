@@ -5,12 +5,9 @@ nav {
   position: absolute;
   left: 0;
   top: 0;
-
-  /* gap: 50px; */
   width: 100%;
   margin-top: 25px;
   padding-inline: 25px;
-
   hr {
     flex-grow: 1;
     display: block;
@@ -45,7 +42,7 @@ nav {
         font-family: var(--ff-second);
         border-bottom: 3px solid #0000;
         transition: border 250ms;
-        &:is(:hover, :focus) {
+        &:hover {
           border-color: rgba(255, 255, 255, 0.5);
         }
         &.active {
@@ -55,6 +52,57 @@ nav {
           content: '0' counter(nav-counter);
           margin-right: 3px;
           font-weight: bold;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 772px) {
+    margin: 0;
+    gap: 15px;
+    justify-content: space-between;
+    hr,
+    a::before {
+      display: none;
+    }
+    .nav-links {
+      padding-inline: 25px;
+      font-size: 0.9rem;
+      li a {
+        padding-block: 25px;
+      }
+    }
+  }
+  @media (max-width: 411px) {
+    .nav-links {
+      order: +1;
+      position: absolute;
+      width: 100%;
+      right: 0;
+      top: calc(100% + 10px);
+      flex-direction: column;
+      padding-inline: 0;
+      backdrop-filter: blur(0px);
+      background: none;
+      pointer-events: visible;
+      visibility: hidden;
+      &.active {
+        li {
+          visibility: visible;
+          transform: scale(1);
+        }
+      }
+      li {
+        transition-duration: 300ms;
+        width: 100%;
+        background-color: rgba(22, 22, 22, 90%);
+        transform: scale(0);
+        transform-origin: right;
+        a {
+          padding-inline: 0;
+          width: 100%;
+          padding-right: 10px;
+          padding-left: 15px;
         }
       }
     }

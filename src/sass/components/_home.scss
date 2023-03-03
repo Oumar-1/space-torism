@@ -30,6 +30,10 @@
       .info {
         color: var(--clr-mid);
       }
+      h5,
+      .info {
+        margin: 0;
+      }
       .info {
         line-height: 2;
       }
@@ -43,7 +47,7 @@
       border-radius: 50%;
       transition: outline 250ms;
       border: none;
-      outline: 0px solid hsla(255, 100%, 85%);
+      outline: 0px solid rgba(255, 255, 255, 15%);
       &:hover {
         outline-width: 1.375em;
         border: 1px solid hsla(255, 100%, 80%);
