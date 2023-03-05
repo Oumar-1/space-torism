@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import Home from './routes/Home';
 import Nav from './components/nav';
 import './sass/index.scss';
+import Destination from './routes/Desitination';
 
 function App() {
   function CreateBG({ name }) {
@@ -45,7 +46,7 @@ function App() {
           element={
             <>
               <CreateBG name='destination' />
-              <h1> destination </h1>
+              <Destination />
             </>
           }
         />
