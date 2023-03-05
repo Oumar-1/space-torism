@@ -45,4 +45,12 @@
       width: 242px;
     }
   }
+  @media (max-width: 411px) {
+    max-height: 100vh;
+    overflow: hidden;
+    .explore-btn {
+      width: 150px;
+    }
+
+  }
 }
