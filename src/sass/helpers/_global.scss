@@ -16,11 +16,11 @@ body {
 }
 .app {
   position: relative;
-  padding-top: 25px;
   display: grid;
   gap: 25px;
   grid-template-rows: auto 1fr;
   min-height: 100vh;
+  min-height: 100dvh;
 }
 a {
   text-decoration: none;
@@ -37,12 +37,22 @@ img {
   z-index: -1;
   img {
     height: 100%;
+    width: 100%;
     aspect-ratio: 2/1;
     vertical-align: middle; // fix extra space on image
   }
 }
 .container {
-  padding-inline: 15px;
+  padding-inline: 20px;
+  max-width: 1100px;
+  width: 100%;
+  margin: auto;
+  @media (max-width: 772px) {
+    max-width: 720px;
+  }
+  @media (max-width: 411px) {
+    max-width: 375px;
+  }
 }
 
 @for $i from 1 through 6 {
@@ -53,55 +63,57 @@ img {
   }
 }
 
-.heading-1 {
-  font-size: 9.375rem;
-}
-.heading-2 {
-  font-size: 6.25rem;
-}
-.heading-3 {
-  font-size: 3.5rem;
-}
-.heading-4 {
-  font-size: 2rem;
-}
-.heading-5 {
-  font-size: 1.75rem;
-  letter-spacing: 0.17em;
-  font-family: var(--ff-second);
-}
-@for $i from 1 through 2 {
-  .sub-h#{$i} {
-    text-transform: uppercase;
+.heading {
+  &-1 {
+    font-size: 9.375rem;
+  }
+  &-2 {
+    font-size: 6.25rem;
+  }
+  &-3 {
+    font-size: 3.5rem;
+  }
+  &-4 {
+    font-size: 2rem;
+  }
+  &-5 {
+    font-size: 1.75rem;
+    letter-spacing: 0.17em;
+    font-family: var(--ff-second);
   }
 }
-.sub-h1 {
-  font-size: 1.75rem;
-  font-family: var(--ff-third);
-}
-.sub-h2 {
-  font-size: 0.875rem;
-  font-family: var(--ff-second);
-  letter-spacing: 0.193em;
+.sub-h {
+  &-1,
+  &-2 {
+    text-transform: uppercase;
+  }
+  &-1 {
+    font-size: 1.75rem;
+    font-family: var(--ff-third);
+  }
+  &-2 {
+    font-size: 0.875rem;
+    font-family: var(--ff-second);
+    letter-spacing: 0.193em;
+  }
 }
 .body-text {
   font-size: 1.125rem;
 }
 @media (max-width: 772px) {
-  .container {
-    padding-inline: 10px;
-  }
-  .heading-2 {
-    font-size: 7rem;
-  }
-  .heading-2 {
-    font-size: 5rem;
-  }
-  .heading-3 {
-    font-size: 2.5rem;
-  }
-  .heading-5 {
-    font-size: 1.25rem;
+  .heading {
+    &-1 {
+      font-size: 7.5rem;
+    }
+    &-2 {
+      font-size: 5rem;
+    }
+    &-3 {
+      font-size: 2.5rem;
+    }
+    &-5 {
+      font-size: 1.25rem;
+    }
   }
   .body-text {
     font-size: 1rem;
