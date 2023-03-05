@@ -1,9 +1,11 @@
 nav {
   display: flex;
   z-index: 100;
+  user-select: none;
   align-items: center;
   position: relative;
-  padding-inline: 25px;
+  padding-left: 25px;
+  padding-top: 25px;
   hr {
     flex-grow: 1;
     display: block;
@@ -14,8 +16,17 @@ nav {
     margin-left: 50px;
     margin-right: -30px;
   }
+  .menu-toggler {
+    cursor: pointer;
+    transition: opacity 200ms;
+    &:hover {
+      opacity: 0.7;
+    }
+  }
   .nav-links {
     display: flex;
+    justify-content: center;
+    flex-grow: 1;
     list-style-type: none;
     align-items: center;
     font-size: 1.3rem;
@@ -24,7 +35,6 @@ nav {
     background-color: rgba(255, 255, 255, 4%);
     backdrop-filter: blur(80px);
     font-family: 'Barlow';
-    padding-inline: 50px;
     counter-reset: nav-counter;
 
     li {
@@ -46,7 +56,7 @@ nav {
         }
         &:before {
           content: '0' counter(nav-counter);
-          margin-right: 3px;
+          margin-right: 10px;
           font-weight: bold;
         }
       }
@@ -54,7 +64,7 @@ nav {
   }
 
   @media (max-width: 772px) {
-    margin: 0;
+    padding-top: 0;
     gap: 15px;
     justify-content: space-between;
     hr,
@@ -70,35 +80,42 @@ nav {
     }
   }
   @media (max-width: 411px) {
+    padding: 15px;
     .nav-links {
       order: +1;
       position: absolute;
+      padding: 0;
       width: 100%;
-      right: 0;
-      top: calc(100% + 10px);
+      left: 0;
+      top: calc(100% + 5px);
       flex-direction: column;
-      padding-inline: 0;
-      backdrop-filter: blur(0px);
       background: none;
       pointer-events: visible;
       visibility: hidden;
+      backdrop-filter: blur(0);
       &.active {
+        visibility: visible;
         li {
-          visibility: visible;
-          transform: scale(1);
+          scale: 1;
         }
       }
       li {
         transition-duration: 300ms;
         width: 100%;
-        background-color: rgba(22, 22, 22, 90%);
-        transform: scale(0);
         transform-origin: right;
+        background-color: var(--clr-dark);
+        scale: 0 1;
         a {
           padding-inline: 0;
+          transition-duration: 150ms;
           width: 100%;
+          filter: blur(0.6px);
           padding-right: 10px;
           padding-left: 15px;
+          &.active,
+          &:hover {
+            filter: blur(0);
+          }
         }
       }
     }
