@@ -1,3 +1,4 @@
+@use '../helpers/mixins' as *;
 nav {
   display: flex;
   z-index: 100;
@@ -46,14 +47,9 @@ nav {
         padding: 0.85em 0.6em;
         display: inline-block;
         font-family: var(--ff-second);
-        border-bottom: 3px solid #0000;
         transition: border 250ms;
-        &:hover {
-          border-color: rgba(255, 255, 255, 0.5);
-        }
-        &.active {
-          border-color: var(--clr-light);
-        }
+        @include link-action();
+
         &:before {
           content: '0' counter(nav-counter);
           margin-right: 10px;
