@@ -1,0 +1,9 @@
+@mixin link-action() {
+  border-bottom: 3px solid #0000;
+  &:hover {
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+  &.active {
+    border-color: var(--clr-light);
+  }
+}
