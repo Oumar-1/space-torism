@@ -3,12 +3,14 @@ import { Route, Routes } from 'react-router-dom';
 import Home from './routes/Home';
 import Nav from './components/nav';
 import './sass/index.scss';
-import Destination from './routes/Desitination';
+import Destination from './routes/Destination';
 
 function App() {
   function CreateBG({ name }) {
+    name = name || 'home';
+
     return (
-      <div className='bg-container'>
+      <div className='overlay-background'>
         <picture>
           <source
             srcSet={require(`./assets/${name}/background-${name}-mobile.jpg`)}
@@ -36,7 +38,7 @@ function App() {
           index
           element={
             <>
-              <CreateBG name='home' />
+              <CreateBG />
               <Home />
             </>
           }
@@ -49,7 +51,9 @@ function App() {
               <Destination />
             </>
           }
-        />
+        >
+          <Route path=':planet' element={<></>} />
+        </Route>
         <Route
           path='/crew'
           element={
