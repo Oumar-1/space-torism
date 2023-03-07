@@ -1,71 +1,47 @@
 import React from 'react';
-import { NavLink, useParams } from 'react-router-dom';
+import { NavLink, useParams, Navigate } from 'react-router-dom';
 import destinationsData from '../json/destinations.json';
 import '../sass/components/_destination.scss';
 
-export default function Destination(props) {
+export default function Destination() {
   const { planet } = useParams();
-  const current =
-    destinationsData.find((item) => item.name === planet) ||
-    destinationsData[0];
+  const current = destinationsData.find((item) => item.title === planet);
 
+  if (current === undefined) {
+    return <Navigate to={destinationsData[0].title} />;
+  }
   return (
     <section className='destination '>
       <div className='container'>
         <h5 className='heading-5'>Pick your destination</h5>
         <div className='content'>
-          <PlanetImg name={current.name} />
+          <PlanetImg title={current.title} />
           <div>
-            <ul className='planet-links'>
-              <Links />
-            </ul>
-            <div className='planet-info'>
-              <h2 className='planet-title heading-2'>{current.name}</h2>
-              <p className='planet-description'>{current.description}</p>
-            </div>
-            <div className='planet-detail'>
-              <div className='box'>
-                <span className='sub-h2'>avg. distance</span>
-                <span className='sub-h1'>{current.distance}km</span>
-              </div>
-              <div className='box'>
-                <span className='sub-h2'>Est. travel time</span>
-                <span className='sub-h1'>
-                  {formatDuration(current.travel_time)}
-                </span>
-              </div>
-            </div>
+            <Links titles={destinationsData.map((e) => e.title)} />
+            <Info title={current.title} description={current.description} />
+            <Details time={current.travel_time} distance={current.distance} />
           </div>
         </div>
       </div>
     </section>
   );
 }
-function Links() {
-  return destinationsData.map((planet) => (
-    <li className='sub-h2' key={planet.name}>
-      <NavLink className='planet-link' to={`/destination/${planet.name}`}>
-        {planet.name}
-      </NavLink>
-    </li>
-  ));
-}
-function PlanetImg({ name }) {
+function PlanetImg({ title }) {
   return (
     <>
       <div className='img-container'>
         <picture>
           <source
-            srcSet={require(`../assets/destination/image-${name}.webp`)}
+            srcSet={require(`../assets/destination/image-${title}.webp`)}
             type='image/webp'
           />
           <source
-            srcSet={require(`../assets/destination/image-${name}.png`)}
+            srcSet={require(`../assets/destination/image-${title}.png`)}
             type='image/png'
           />
           <img
-            src={require(`../assets/destination/image-${name}.png`)}
-            alt={`The ${name} `}
+            src={require(`../assets/destination/image-${title}.png`)}
+            alt={`The ${title} `}
             loading='lazy'
           />
         </picture>
@@ -73,6 +49,43 @@ function PlanetImg({ name }) {
     </>
   );
 }
+
+function Links({ titles }) {
+  return (
+    <ul className='planet-links'>
+      {titles.map((title) => (
+        <li className='sub-h2' key={title}>
+          <NavLink className='planet-link' to={`/destination/${title}`}>
+            {title}
+          </NavLink>
+        </li>
+      ))}
+    </ul>
+  );
+}
+function Info({ title, description }) {
+  return (
+    <div className='planet-info'>
+      <h2 className='planet-title heading-2'>{title}</h2>
+      <p className='planet-description'>{description}</p>
+    </div>
+  );
+}
+function Details({ distance, time }) {
+  return (
+    <div className='planet-details'>
+      <div className='box'>
+        <span className='sub-h2'>avg. distance</span>
+        <span className='sub-h1'>{distance} km</span>
+      </div>
+      <div className='box'>
+        <span className='sub-h2'>Est. travel time</span>
+        <span className='sub-h1'>{formatDuration(time)}</span>
+      </div>
+    </div>
+  );
+}
+
 function formatDuration(duration) {
   let formattedDuration = duration,
     units = [
