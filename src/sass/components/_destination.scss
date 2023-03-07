@@ -60,4 +60,13 @@
       }
     }
   }
+  @media (max-width: 411px){
+    .content {
+      .planet-details {
+        flex-direction: column;
+        gap: 30px;
+      }
+
+    }
+  }
 }
