@@ -4,9 +4,8 @@
     display: flex;
     justify-content: space-between;
     gap: 25px;
-    .planet-description {
-      max-width: 500px;
-    }
+    padding-bottom: 50px;
+
     .planet-links {
       display: flex;
       align-items: center;
@@ -17,8 +16,48 @@
         @include link-action();
       }
     }
-    .planet-title {
-      margin: 0.4em 0;
+    .planet-info {
+      border-bottom: 1px solid #383b4b;
+      padding-bottom: 35px;
+      margin-bottom: 25px;
+      .planet-title {
+        margin: 0.4em 0 0.1em;
+      }
+      .planet-description {
+        max-width: 444px;
+        line-height: 2;
+        margin: 0;
+      }
+    }
+    .planet-details {
+      display: flex;
+      justify-content: space-between;
+      .box {
+        span {
+          &:first-of-type {
+            margin-bottom: 12px;
+          }
+          display: block;
+        }
+      }
+    }
+  }
+  @media (max-width: 772px) {
+    .content {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      .planet-links {
+        justify-content: center;
+      }
+      .planet-info {
+        .planet-description {
+          max-width: unset;
+        }
+      }
+      .planet-details {
+        justify-content: space-around;
+      }
     }
   }
 }
