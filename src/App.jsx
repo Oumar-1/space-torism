@@ -4,30 +4,9 @@ import Home from './routes/Home';
 import Nav from './components/nav';
 import './sass/index.scss';
 import Destination from './routes/Destination';
+import Crew from './routes/Crew';
 
 function App() {
-  function CreateBG({ name }) {
-    name = name || 'home';
-
-    return (
-      <div className='overlay-background'>
-        <picture>
-          <source
-            srcSet={require(`./assets/${name}/background-${name}-mobile.jpg`)}
-            media='(max-width: 411px)'
-          />
-          <source
-            srcSet={require(`./assets/${name}/background-${name}-tablet.jpg`)}
-            media='(max-width: 772px)'
-          />
-          <img
-            src={require(`./assets/${name}/background-${name}-desktop.jpg`)}
-            alt='home background'
-          />
-        </picture>
-      </div>
-    );
-  }
   return (
     <div className='app'>
       <Nav />
@@ -59,7 +38,7 @@ function App() {
           element={
             <>
               <CreateBG name='crew' />
-              <h1> crew </h1>
+              <Crew />
             </>
           }
         />
@@ -77,4 +56,24 @@ function App() {
   );
 }
 
+function CreateBG({ name = 'home' }) {
+  return (
+    <div className='overlay-background'>
+      <picture>
+        <source
+          srcSet={require(`./assets/${name}/background-${name}-mobile.jpg`)}
+          media='(max-width: 411px)'
+        />
+        <source
+          srcSet={require(`./assets/${name}/background-${name}-tablet.jpg`)}
+          media='(max-width: 772px)'
+        />
+        <img
+          src={require(`./assets/${name}/background-${name}-desktop.jpg`)}
+          alt='home background'
+        />
+      </picture>
+    </div>
+  );
+}
 export default App;
