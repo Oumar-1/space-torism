@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink, useParams, Navigate } from 'react-router-dom';
 import destinationsData from '../json/destinations.json';
+import SectionHeading from '../components/SectionHeading';
 import '../sass/components/_destination.scss';
 
 export default function Destination() {
@@ -13,7 +14,7 @@ export default function Destination() {
   return (
     <section className='destination '>
       <div className='container'>
-        <h5 className='heading-5'>Pick your destination</h5>
+        <SectionHeading title='Pick your destination' count={1} />
         <div className='content'>
           <PlanetImg title={current.title} />
           <div>
