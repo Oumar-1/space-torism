@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { ReactComponent as Logo } from '../assets/shared/logo.svg';
 import { ReactComponent as Hamburger } from '../assets/shared/icon-hamburger.svg';
@@ -7,13 +7,17 @@ import '../sass/components/_nav.scss';
 import useWindowSize from '../hooks/useWindowSize';
 import useToggler from '../hooks/useToggler';
 
-function Nav(props) {
+function Nav() {
   const { width: windowWidth } = useWindowSize();
   const [isNavOpen, setIsNavOpen] = useToggler(false);
-  let delay = 0;
-  const diff = 100;
 
-  const style = () => ({ transitionDelay: (delay += diff) + 'ms' });
+  function ListItem({ path, text }) {
+    return (
+      <li onClick={setIsNavOpen}>
+        <NavLink to={`${path}`}>{text}</NavLink>
+      </li>
+    );
+  }
   return (
     <nav>
       <Link to='/'>
@@ -23,18 +27,10 @@ function Nav(props) {
       </Link>
       <hr />
       <ul className={`nav-links ${isNavOpen ? 'active' : ''} `}>
-        <li style={style()}>
-          <NavLink to='/'>Home</NavLink>
-        </li>
-        <li style={style()}>
-          <NavLink to='/destination'>Destination </NavLink>
-        </li>
-        <li style={style()}>
-          <NavLink to='/crew'>crew </NavLink>
-        </li>
-        <li style={style()}>
-          <NavLink to='/technology'>technology</NavLink>
-        </li>
+        <ListItem path='/' text='Home' />
+        <ListItem path='/destination' text='Destination' />
+        <ListItem path='/crew' text='crew' />
+        <ListItem path='/technology' text='technology' />
       </ul>
       {windowWidth < 411 && (
         <div className='menu-toggler' onClick={setIsNavOpen}>
