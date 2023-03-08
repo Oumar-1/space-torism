@@ -4,11 +4,12 @@
     display: flex;
     justify-content: space-between;
     gap: 25px;
-    padding-bottom: 50px;
+    padding-bottom: 40px;
 
     .planet-links {
       display: flex;
       align-items: center;
+      color: var(--clr-mid);
       padding: 0;
       gap: 15px;
       .planet-link {
@@ -25,6 +26,7 @@
       }
       .planet-description {
         max-width: 444px;
+        color: var(--clr-mid);
         line-height: 2;
         margin: 0;
       }
@@ -36,6 +38,7 @@
         span {
           &:first-of-type {
             margin-bottom: 12px;
+            color: var(--clr-mid);
           }
           display: block;
         }
@@ -60,13 +63,12 @@
       }
     }
   }
-  @media (max-width: 411px){
+  @media (max-width: 411px) {
     .content {
       .planet-details {
         flex-direction: column;
         gap: 30px;
       }
-
     }
   }
 }

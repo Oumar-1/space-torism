@@ -1,0 +1,104 @@
+.crew {
+  .container {
+    height: 100%;
+  }
+  overflow: hidden;
+  .section-heading {
+    margin: 0;
+  }
+  .content {
+    display: flex;
+    justify-content: space-between;
+    min-height: 100%;
+    gap: 25px;
+    .member-info {
+      padding-bottom: 35px;
+      margin-top: 100px;
+      .member-name {
+        margin: 0.5em 0;
+      }
+      .member-job {
+        opacity: 0.5;
+        margin: 0;
+      }
+      .crew-member-description {
+        max-width: 550px;
+        color: var(--clr-mid);
+        line-height: 2;
+        margin: 0;
+      }
+    }
+    .bullet-links {
+      padding: 0;
+      margin-top: 70px;
+      display: flex;
+      gap: 15px;
+      .bullet-link {
+        opacity: 0.3;
+        cursor: pointer;
+        border-radius: 50%;
+        width: 15px;
+        height: 15px;
+        background-color: var(--clr-gray);
+        transition: 250ms opacity;
+        &:hover {
+          opacity: 0.7;
+        }
+        &.active {
+          background-color: #fff;
+          opacity: 100%;
+        }
+      }
+    }
+    @media (max-width: 772px) {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      .bullet-links {
+        margin-top: 40px;
+        justify-content: center;
+      }
+      .img-container {
+        margin: auto;
+      }
+    }
+    @media (max-width: 411px) {
+      flex-direction: column-reverse;
+      justify-content: center;
+      padding-bottom: 40px;
+      padding-top: 20px;
+      .member-info {
+        margin-top: 0;
+        display: flex;
+        flex-direction: column-reverse;
+      }
+      .bullet-links {
+        margin-top: 20px;
+        margin-bottom: 35px;
+      }
+      .img-container {
+        border-bottom: 2px solid var(--clr-dark-gray);
+        margin: unset;
+        width: 100%;
+        overflow: hidden;
+        max-height: 300px;
+        img {
+          width: 220px;
+          max-width: 100%;
+          vertical-align: bottom;
+          margin-bottom: -3px;
+        }
+      }
+    }
+  }
+  .img-container {
+    align-self: flex-end;
+
+    img {
+      max-width: 500px;
+      height: auto;
+      max-height: 500px;
+    }
+  }
+}
