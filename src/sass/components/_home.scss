@@ -21,18 +21,26 @@
     }
   }
   .explore-btn {
-    text-transform: uppercase;
-    font-weight: 400;
-    width: 274px;
-    aspect-ratio: 1/1;
-    font-family: 'Bellefair';
-    border-radius: 50%;
-    transition: outline 250ms;
+    --btn-width: 274px;
+    background-color: #0000;
     border: none;
     outline: 0px solid rgba(255, 255, 255, 15%);
-    &:hover {
-      outline-width: 1.375em;
-      border: 1px solid hsla(255, 100%, 80%);
+    a {
+      display: inline-block;
+      height: 100%;
+      width: 100%;
+      line-height: var(--btn-width);
+      background-color: buttonface;
+      text-transform: uppercase;
+      font-weight: 400;
+      width: var(--btn-width);
+      font-family: 'Bellefair';
+      border-radius: 50%;
+      transition: outline 250ms;
+      &:hover {
+        outline-width: 1.375em;
+        border: 1px solid hsla(255, 100%, 80%);
+      }
     }
   }
   @media (max-width: 772px) {
@@ -42,15 +50,13 @@
     padding-bottom: 30px;
     text-align: center;
     .explore-btn {
-      width: 242px;
+      --btn-width: 242px;
     }
   }
   @media (max-width: 411px) {
     max-height: 100vh;
-    overflow: hidden;
     .explore-btn {
-      width: 150px;
+      --btn-width: 150px;
     }
-
   }
 }

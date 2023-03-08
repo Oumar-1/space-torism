@@ -21,6 +21,8 @@ nav {
   .menu-toggler {
     cursor: pointer;
     transition: opacity 200ms;
+    padding: 15px;
+    z-index: 2;
     &:hover {
       opacity: 0.7;
     }
@@ -79,39 +81,41 @@ nav {
     gap: 0;
     padding: 15px;
     .nav-links {
-      order: +1;
       position: absolute;
       padding: 0;
-      width: 100%;
-      left: 0;
-      top: calc(100% + 5px);
+      padding-top: 80px;
+      width: 70%;
+      right: 0;
+      top: 0;
       flex-direction: column;
-      background: none;
-      pointer-events: visible;
-      visibility: hidden;
-      backdrop-filter: blur(0);
+      margin: 0;
+      transform-origin: right;
+      backdrop-filter: blur(100px);
+      justify-content: start;
+      min-height: 100vh;
+      min-height: 100dvh;
+      transition-duration: 300ms;
+      scale: 0 1;
       &.active {
-        visibility: visible;
+        scale: 1;
         li {
-          scale: 1;
+          opacity: 1;
         }
       }
       li {
-        transition-duration: 300ms;
         width: 100%;
-        transform-origin: right;
-        background-color: var(--clr-dark);
-        scale: 0 1;
+        opacity: 0;
         a {
           padding-inline: 0;
           transition-duration: 150ms;
+          border-bottom: none;
+          border-right: 5px solid #0000;
           width: 100%;
-          filter: blur(0.6px);
-          padding-right: 10px;
-          padding-left: 15px;
-          &.active,
-          &:hover {
-            filter: blur(0);
+          padding: 0;
+          padding-block: 20px;
+          padding-left: 30px;
+          &::before {
+            display: inline-block;
           }
         }
       }
