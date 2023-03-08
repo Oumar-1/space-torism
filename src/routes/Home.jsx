@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import '../sass/components/_home.scss';
 
 function Home() {
@@ -14,7 +15,11 @@ function Home() {
           experience!
         </p>
       </div>
-      <button className='explore-btn heading-5'>explore</button>
+      <button className='explore-btn '>
+        <NavLink className='explore-btn heading-5' to='/destination'>
+          explore
+        </NavLink>
+      </button>
     </section>
   );
 }
