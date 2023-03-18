@@ -8,6 +8,7 @@
     padding-bottom: 40px;
     .content {
       display: flex;
+      padding-left: 15px;
       gap: 25px;
       justify-self: center;
       .description {
@@ -48,8 +49,10 @@
       .content {
         flex-direction: column;
         text-align: center;
+        padding-inline: 10px;
         .links {
           padding-inline: 10px;
+          justify-content: center;
           flex-direction: row;
           .tech-link {
             width: 50px;
