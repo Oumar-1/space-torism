@@ -5,6 +5,7 @@ import Nav from './components/nav';
 import './sass/index.scss';
 import Destination from './routes/Destination';
 import Crew from './routes/Crew';
+import Technology from './routes/Technology';
 
 function App() {
   return (
@@ -47,7 +48,7 @@ function App() {
           element={
             <>
               <CreateBG name='technology' />
-              <h1> technology </h1>
+              <Technology />
             </>
           }
         />

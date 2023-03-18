@@ -66,6 +66,7 @@ p {
   }
   &-3 {
     font-size: 3.5rem;
+    margin-block: 0.4em;
   }
   &-4 {
     font-size: 2rem;
@@ -111,20 +112,22 @@ p {
   }
 }
 @media (max-width: 411px) {
-  .heading-1 {
-    font-size: 5rem;
-  }
-  .heading-2 {
-    font-size: 3.5rem;
-  }
-  .heading-3 {
-    font-size: 1.5rem;
-  }
-  .heading-4 {
-    font-size: 1.25rem;
-  }
-  .heading-5 {
-    font-size: 1rem;
+  .heading {
+    &-1 {
+      font-size: 5rem;
+    }
+    &-2 {
+      font-size: 3.5rem;
+    }
+    &-3 {
+      font-size: 1.5rem;
+    }
+    &-4 {
+      font-size: 1.25rem;
+    }
+    &-5 {
+      font-size: 1rem;
+    }
   }
   body {
     font-size: 0.935rem;
